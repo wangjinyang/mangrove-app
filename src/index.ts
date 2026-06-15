@@ -229,10 +229,10 @@ const client = new MangroveClient({
     body: JSON.stringify(backtestPayload),
   });
   const result = await response.json();
-  console.log('result: ', result);
+  console.log("result: ", result);
 
   // Save result to JSON file
-  const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+  const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
   const filename = `backtest-result-${timestamp}.json`;
   fs.writeFileSync(filename, JSON.stringify(result, null, 2));
   console.log(`Result saved to ${filename}`);
@@ -255,7 +255,35 @@ const client = new MangroveClient({
   //   { headers },
   // );
   // const savedResult = await response.json();
-  // console.log('savedResult: ', savedResult);
+  // console.log("savedResult: ", savedResult);
   // console.log(`Status: ${savedResult.status}`);
   // console.log(`Metrics:`, savedResult.metrics);
+//   const backtestPayload = {
+//   strategy_id: "8b452db8-7d72-4422-a0e6-02a8f6c3aa77",
+//   interval: "4h",
+//   lookback_months: 12,
+//   initial_balance: 10000.0,
+//   min_balance_threshold: 0.1,
+//   min_trade_amount: 25.0,
+//   max_open_positions: 5,
+//   max_trades_per_day: 50,
+//   max_risk_per_trade: 0.01,
+//   max_units_per_trade: 100.0,
+//   max_trade_amount: 10000.0,
+//   volatility_window: 24,
+//   target_volatility: 0.02,
+//   volatility_mode: "stddev",
+//   enable_volatility_adjustment: false,
+//   cooldown_bars: 24,
+//   daily_momentum_limit: 3.0,
+//   weekly_momentum_limit: 3.0,
+// };
+
+// const response = await fetch(`${BASE_URL}/api/v1/backtesting/backtest`, {
+//   method: "POST",
+//   headers,
+//   body: JSON.stringify(backtestPayload),
+// });
+// const result = await response.json();
+// console.log('result: ', result);
 })();
